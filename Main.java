@@ -1,5 +1,6 @@
+import java.util.*;
 import java.util.Scanner;
-class Main {
+class Main
 {   
    public static void main(String[] args) 
    {  
@@ -8,11 +9,24 @@ class Main {
       int gallonsNeeded;
       int extraQuartsNeeded;
       Scanner input = new Scanner(System.in);
-      System.out.print("Enter quarts needed >> ");
-      quartsNeeded = input.nextInt();
-      gallonsNeeded = quartsNeeded / QUARTS_IN_GALLON;
-      extraQuartsNeeded = quartsNeeded % QUARTS_IN_GALLON;
-      System.out.println("A job that needs " + quartsNeeded +
+
+     while(true)
+       {
+       try{
+        System.out.print("Enter quarts needed >> ");
+        quartsNeeded = input.nextInt();
+       }
+       catch(InputMismatchException mistake)
+         {
+           System.out.println("That is not an integer.\n");
+           input.nextLine();
+           continue;
+         }
+         break;
+       }
+       gallonsNeeded = quartsNeeded / QUARTS_IN_GALLON;
+        extraQuartsNeeded = quartsNeeded % QUARTS_IN_GALLON;
+        System.out.println("A job that needs " + quartsNeeded +
          " quarts requires " + gallonsNeeded + " gallons plus " +
          extraQuartsNeeded + " quarts.");
    }
